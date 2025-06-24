@@ -22,7 +22,7 @@ const testimonials = [
     type: "video",
     avatar: "👩🏾‍🏫",
     videoThumbnail: "/images/testimonials/fatou-thumb.jpg",
-    videoUrl: "/videos/2.mov"
+    videoUrl: "/videos/2.MP4"
   },
   {
     name: "Ibrahim Koné",
