@@ -20,7 +20,6 @@ const testimonials = [
     rating: 5,
     text: "Incroyable ! L'installation a pris 5 minutes sur ma Smart TV. Depuis 8 mois, aucun problème technique. Le support client répond rapidement via WhatsApp. Je recommande à toutes mes collègues !",
     type: "video",
-    avatar: "👩🏾‍🏫",
     videoThumbnail: "/images/testimonials/fatou-thumb.jpg",
     videoUrl: "/videos/2.MP4"
   },
@@ -55,22 +54,29 @@ const testimonials = [
 
 const TestimonialsSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const [playingVideo, setPlayingVideo] = useState<string | null>(null);
-  const [autoplayStarted, setAutoplayStarted] = useState(false);
+  const [playingVideos, setPlayingVideos] = useState<Set<string>>(new Set());
 
-  // Auto-play première vidéo au chargement
+  // Auto-play des deux premières vidéos au chargement
   useEffect(() => {
-    if (!autoplayStarted && testimonials[0].type === 'video') {
-      const timer = setTimeout(() => {
-        setPlayingVideo(testimonials[0].videoUrl || '');
-        setAutoplayStarted(true);
-      }, 1000); // Démarre après 1 seconde
-      return () => clearTimeout(timer);
-    }
-  }, [autoplayStarted]);
+    const timer = setTimeout(() => {
+      const videoUrls = new Set<string>();
+      
+      // Ajouter les URLs des deux premières vidéos
+      if (testimonials[0].type === 'video' && testimonials[0].videoUrl) {
+        videoUrls.add(testimonials[0].videoUrl);
+      }
+      if (testimonials[1].type === 'video' && testimonials[1].videoUrl) {
+        videoUrls.add(testimonials[1].videoUrl);
+      }
+      
+      setPlayingVideos(videoUrls);
+    }, 500); // Démarre après 0.5 seconde
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleVideoPlay = (videoUrl: string) => {
-    setPlayingVideo(videoUrl);
+    setPlayingVideos(prev => new Set([...prev, videoUrl]));
   };
 
   const nextTestimonial = () => {
@@ -134,14 +140,19 @@ const TestimonialsSection = () => {
               <div className="relative">
                 <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-primary/30">
                   <div className="relative h-64 sm:h-80 lg:h-96">
-                    {playingVideo === testimonials[0].videoUrl ? (
+                    {playingVideos.has(testimonials[0].videoUrl || '') ? (
                       <video 
                         className="w-full h-full object-cover rounded-2xl"
                         controls
                         autoPlay
                         muted
+                        loop
                         src={testimonials[0].videoUrl}
-                        onError={() => setPlayingVideo(null)}
+                        onError={() => setPlayingVideos(prev => {
+                          const newSet = new Set(prev);
+                          newSet.delete(testimonials[0].videoUrl || '');
+                          return newSet;
+                        })}
                       />
                     ) : (
                       <>
@@ -192,14 +203,19 @@ const TestimonialsSection = () => {
               <div className="relative">
                 <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl border border-secondary/30">
                   <div className="relative h-64 sm:h-80 lg:h-96">
-                    {playingVideo === testimonials[1].videoUrl ? (
+                    {playingVideos.has(testimonials[1].videoUrl || '') ? (
                       <video 
                         className="w-full h-full object-cover rounded-2xl"
                         controls
                         autoPlay
                         muted
+                        loop
                         src={testimonials[1].videoUrl}
-                        onError={() => setPlayingVideo(null)}
+                        onError={() => setPlayingVideos(prev => {
+                          const newSet = new Set(prev);
+                          newSet.delete(testimonials[1].videoUrl || '');
+                          return newSet;
+                        })}
                       />
                     ) : (
                       <>
@@ -341,14 +357,19 @@ const TestimonialsSection = () => {
               {/* Section média responsive avec meilleure visibilité */}
               {testimonial.type === 'video' && testimonial.videoThumbnail ? (
                 <div className="relative h-40 sm:h-48 lg:h-56 overflow-hidden">
-                  {playingVideo === testimonial.videoUrl ? (
+                  {playingVideos.has(testimonial.videoUrl || '') ? (
                     <video 
                       className="w-full h-full object-cover"
                       controls
                       autoPlay
                       muted
+                      loop
                       src={testimonial.videoUrl}
-                      onError={() => setPlayingVideo(null)}
+                      onError={() => setPlayingVideos(prev => {
+                        const newSet = new Set(prev);
+                        newSet.delete(testimonial.videoUrl || '');
+                        return newSet;
+                      })}
                     />
                   ) : (
                     <>
