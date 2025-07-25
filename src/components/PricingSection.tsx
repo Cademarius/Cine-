@@ -263,18 +263,18 @@ const PricingSection = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <a href="https://www.pay.moneyfusion.net/abonnement-chaines-sportives-et-de-divertissement-_1750202328077/" target="_blank" rel="noopener noreferrer">
-  <Button 
-    size="lg"
-    className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-black font-bold px-6 sm:px-12 lg:px-16 py-4 sm:py-6 lg:py-8 text-base sm:text-xl lg:text-2xl rounded-xl sm:rounded-2xl transition-all duration-300 shadow-2xl w-full sm:w-auto"
-  >
-    <span className="flex items-center space-x-2">
-      <span>🚀</span>
-      <span className="hidden sm:inline">Obtenir Cine + maintenant - 5,000 FCFA</span>
-      <span className="sm:hidden">Obtenir Cine + 5,000 FCFA</span>
-    </span>
-  </Button>
-</a>
+                  <a href="https://www.pay.moneyfusion.net/abonnement-streaming_1753361381450/" target="_blank" rel="noopener noreferrer">
+                    <Button 
+                      size="lg"
+                      className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-black font-bold px-6 sm:px-12 lg:px-16 py-4 sm:py-6 lg:py-8 text-base sm:text-xl lg:text-2xl rounded-xl sm:rounded-2xl transition-all duration-300 shadow-2xl w-full sm:w-auto"
+                    >
+                      <span className="flex items-center space-x-2">
+                        <span>🚀</span>
+                        <span className="hidden sm:inline">Obtenir Cine + maintenant - 5,000 FCFA</span>
+                        <span className="sm:hidden">Obtenir Cine + 5,000 FCFA</span>
+                      </span>
+                    </Button>
+                  </a>
                 </motion.div>
                 
                 <div className="text-gray-400 text-sm sm:text-base lg:text-lg mt-4 sm:mt-6 space-y-2">

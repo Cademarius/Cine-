@@ -58,12 +58,12 @@ const FaqSection = () => {
           viewport={{ once: true }}
         >
           <h2 className="cinema-font text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-black mb-4 sm:mb-6 md:mb-8 text-shadow text-center sm:text-left">
-  <span className="text-white">Questions</span>
-  <br />
-  <span className="gradient-primary bg-clip-text text-transparent neon-glow">
-    fréquentes
-  </span>
-</h2>
+            <span className="text-white">Questions</span>
+            <br />
+            <span className="gradient-primary bg-clip-text text-transparent neon-glow">
+              fréquentes
+            </span>
+          </h2>
           <p className="text-2xl md:text-3xl text-gray-200 max-w-2xl mx-auto text-shadow">
             Toutes les réponses aux questions que vous vous posez
           </p>
@@ -132,13 +132,13 @@ const FaqSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <a 
-                href="https://wa.me/+2210168943491" 
+                href="https://wa.me/+2290153941023" 
                 className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg text-lg"
               >
                 💬 WhatsApp Support
               </a>
               <a 
-                href="tel:+2210168943491" 
+                href="tel: +2290153941023" 
                 className="bg-primary hover:bg-primary/90 text-black px-8 py-4 rounded-2xl font-bold transition-all duration-300 transform hover:scale-105 shadow-lg text-lg neon-glow"
               >
                 📞 Appel gratuit
